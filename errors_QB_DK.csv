@@ -1,0 +1,3 @@
+KNN,Linear_Regression,Random_Forest,Gradient_Boost,XGBoost
+{'n_neighbors': 35},{'alpha': 24.565306122448984},"{'n_estimators': 500, 'min_samples_split': 2, 'min_samples_leaf': 4, 'max_depth': 6}","{'n_estimators': 100, 'max_depth': 2, 'learning_rate': 0.1}","{'subsample': 0.8, 'reg_lambda': 1, 'reg_alpha': 0.01, 'n_estimators': 100, 'max_depth': 2, 'learning_rate': 0.05, 'gamma': 0.1, 'colsample_bytree': 1.0}"
+7.704548048681453,7.470141938786919,7.405278678453883,7.44117424990967,7.449694639196441
