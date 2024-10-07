@@ -32,7 +32,33 @@ if st.session_state.site_for_pred:
 
     if uploaded_file is not None:
         df = pd.read_csv(uploaded_file)
+        #st.write(f"{site_for_pred} predictions data successfully loaded.")
+
+         # Select columns to display
+        display_df = df[['name', 'team', 'position', 'opponent', 'salary', 'status', 'median_pred', 'value']]
+        
         st.write(f"{site_for_pred} predictions data successfully loaded.")
+        
+        # Display and allow sorting by any column
+        st.dataframe(display_df)
+
+        # Filter by position
+        position_filter = st.multiselect("Filter by position:", options=df['position'].unique(), default=df['position'].unique())
+        
+        # Filter by team
+        team_filter = st.multiselect("Filter by team:", options=df['team'].unique(), default=df['team'].unique())
+        
+        # Apply the filters to the DataFrame
+        filtered_df = display_df[(display_df['position'].isin(position_filter)) & (display_df['team'].isin(team_filter))]
+
+        st.dataframe(filtered_df)
+        
+        # Allow user to sort by any column interactively
+        # sort_by = st.selectbox("Sort by column:", display_df.columns)
+        # sorted_df = display_df.sort_values(by=sort_by, ascending=False)
+        
+        # st.write("Sorted Data:")
+        # st.dataframe(sorted_df)
 
         # Select players to lock into the lineup
         lock_list = st.multiselect("Select players to lock into the lineup:", df['name'].unique())
