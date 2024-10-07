@@ -11,8 +11,8 @@ def get_next_sunday(day_of_week):
     today = datetime.today()
     if day_of_week == 0:
         target_date = today - timedelta(days = 1)
-    elif day_of_week == 1:
-        target_date = today - timedelta(days = 2)
+    # elif day_of_week == 1:
+    #     target_date = today - timedelta(days = 2)
     else:
         days_ahead = 6 - today.weekday()  # Calculate days until Sunday (Sunday is day 6)
         target_date = today + timedelta(days=days_ahead)
