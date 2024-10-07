@@ -39,4 +39,4 @@ Predictions
 Feature scalers and models stored in pickle files
 
 ## Live_Notebook11
-Lineup generate using PuLP
+Generate lineups using PuLP
