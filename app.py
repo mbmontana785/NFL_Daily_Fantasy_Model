@@ -21,7 +21,7 @@ exclude_list = []
 lock_list = []
 exclude_teams = []
 
-st.title(f"NFL Daily Fantasy Lineup Generator: Week {str(week)}")
+st.title(f"NFL Daily Fantasy Lineup Generator: Week 6")
 st.write("**Note:** These are not live predictions and lineups. The app is currently for personal use. Predictions from Week 6 of the 2024 NFL season are used to demonstrate the app's functionality.")
 col1, col2 = st.columns(2)
 
