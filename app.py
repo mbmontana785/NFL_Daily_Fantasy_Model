@@ -1,46 +1,94 @@
 import streamlit as st
 import pandas as pd
+import numpy as np
 import pulp
+from functions import get_current_weekday, calculate_nfl_week, get_next_sunday, get_current_year
+
+def create_subtitle(text, emphasis=True):
+    if emphasis:
+        return f"<h3 style='color: black; font-weight: bold;'>{text}</h3>"
+    else:
+        return f"<h3 style='color: black;'>{text}</h3>"
+
+        
+day = get_current_weekday()
+date_string = get_next_sunday(day)
+week = calculate_nfl_week(date_string)
+season = get_current_year()
 
 # Initialize lists for exclusions and locks
 exclude_list = []
 lock_list = []
 exclude_teams = []
 
-st.title("NFL Daily Fantasy Lineup Generator")
+st.title(f"NFL Daily Fantasy Lineup Generator: Week {str(week)}")
+st.write("**Note:** These are not live predictions and lineups. The app is currently for personal use. Predictions from Week 6 of the 2024 NFL season are used to demonstrate the app's functionality.")
+col1, col2 = st.columns(2)
 
 # Check if 'site_for_pred' has been set in session_state
 if 'site_for_pred' not in st.session_state:
     st.session_state.site_for_pred = None
 
 # Use buttons instead of a dropdown to select FanDuel or DraftKings
-if st.session_state.site_for_pred is None:
-    if st.button('FanDuel'):
-        st.session_state.site_for_pred = 'FanDuel'
-    elif st.button('DraftKings'):
-        st.session_state.site_for_pred = 'DraftKings'
+if st.session_state.site_for_pred is None: 
+    if col1.button('FanDuel'):
+        st.session_state.site_for_pred = 'FD'
+    if col2.button('DraftKings'):
+        st.session_state.site_for_pred = 'DK'
 
 # Now, check if a site has been selected
 if st.session_state.site_for_pred:
     site_for_pred = st.session_state.site_for_pred
-    cap = 60000 if site_for_pred == 'FanDuel' else 50000
+    cap = 60000 if site_for_pred == 'FD' else 50000
 
-    st.write(f"You selected {site_for_pred}. Please upload the predictions CSV.")
+    # Automatically load predefined CSV file based on the site selection
+    file_path = f'{site_for_pred}_predictions_{str(season)}_{str(week)}.csv'  # This will be 'fanduel_predictions.csv' or 'draftkings_predictions.csv'
 
-    # Upload the predictions CSV
-    uploaded_file = st.file_uploader(f"Upload the {site_for_pred} predictions CSV", type=['csv'])
+    try:
+        df = pd.read_csv(file_path)
+        st.markdown(create_subtitle(f"{('FanDuel' if site_for_pred == 'FD' else 'DraftKings')} Predictions"), unsafe_allow_html=True)
+    except FileNotFoundError:
+        st.write(f"Could not find the {file_path} file. Please upload the {site_for_pred} predictions CSV manually.")
+        uploaded_file = st.file_uploader(f"Upload the {site_for_pred} predictions CSV", type=['csv'])
+        if uploaded_file is not None:
+            df = pd.read_csv(uploaded_file)
+            st.write(f"{site_for_pred} predictions data successfully loaded from upload.")
 
-    if uploaded_file is not None:
-        df = pd.read_csv(uploaded_file)
-        #st.write(f"{site_for_pred} predictions data successfully loaded.")
+    # try:
+    #     # Attempt to read the file automatically
+    #     df = pd.read_csv(file_path)
+    #     st.write(f"{'FanDuel' if site_for_pred == 'FD' else 'DraftKings'} predictions data automatically loaded from {file_path}.")
+    # except FileNotFoundError:
+    #     # Fallback: If file not found, allow user to upload the CSV
+    #     st.write(f"Could not find the {file_path} file. Please upload the {site_for_pred} predictions CSV manually.")
+    #     uploaded_file = st.file_uploader(f"Upload the {site_for_pred} predictions CSV", type=['csv'])
 
-         # Select columns to display
+        if uploaded_file is not None:
+            df = pd.read_csv(uploaded_file)
+            st.write(f"{site_for_pred} predictions data successfully loaded from upload.")
+
+    # Continue with the rest of your app logic
+    if 'df' in locals():  # Check if df was successfully loaded
+        # Select columns to display
         display_df = df[['name', 'team', 'position', 'opponent', 'salary', 'status', 'median_pred', 'value']]
         
-        st.write(f"{site_for_pred} predictions data successfully loaded.")
+        # Display the dataframe without the index
+        st.dataframe(display_df.reset_index(drop=True))
+
+    # # Upload the predictions CSV
+    # uploaded_file = st.file_uploader(f"Upload the {site_for_pred} predictions CSV", type=['csv'])
+
+    # if uploaded_file is not None:
+    #     df = pd.read_csv(uploaded_file)
+    #     #st.write(f"{site_for_pred} predictions data successfully loaded.")
+
+    #      # Select columns to display
+    #     display_df = df[['name', 'team', 'position', 'opponent', 'salary', 'status', 'median_pred', 'value']]
         
-        # Display and allow sorting by any column
-        st.dataframe(display_df)
+    #     st.write(f"{site_for_pred} predictions data successfully loaded.")
+        
+    #     # Display and allow sorting by any column
+    #     st.dataframe(display_df.reset_index(drop = True))
 
         # Filter by position
         position_filter = st.multiselect("Filter by position:", options=df['position'].unique(), default=df['position'].unique())
@@ -136,8 +184,9 @@ if st.session_state.site_for_pred:
             # Generate the lineup and display it
             lineup, total_salary, total_pred_points = generate_lineup(df, cap)
 
+            st.markdown(create_subtitle(f"{('FanDuel' if site_for_pred == 'FD' else 'DraftKings')} Lineup"), unsafe_allow_html=True)
             st.write(f"Total Salary Used: {total_salary}")
-            st.write(f"Total Predicted Points: {total_pred_points}")
+            st.write(f"Total Predicted Points: {np.round(total_pred_points, 3)}")
 
             # Create a DataFrame for the lineup with custom column headers
             lineup_df = pd.DataFrame(lineup, columns=["Position", "Player", "Team", "Salary", "Predicted Points"])
