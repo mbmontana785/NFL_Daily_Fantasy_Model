@@ -193,4 +193,4 @@ if st.session_state.site_for_pred:
             st.table(lineup_df)
 
 else:
-    st.write("Please select a site and upload a CSV file to generate lineups.")
+    st.write("Please select a site to generate predictions.")
