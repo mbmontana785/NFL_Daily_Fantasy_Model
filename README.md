@@ -58,11 +58,11 @@ Machine learning models that predict fantasy points for defense, quarterbacks, a
 Process player lists downloaded from FanDuel and DraftKings. Player lists stored in **SQLite.** Name matching with **rapidfuzz** library.
 
 ### Live_Notebook1a
-Calculate previous week's points for fantasy defenses
-- Use **R Studio** to download weekly data and play-by-play data from [nflfastr](https://www.nflfastr.com/articles/beginners_guide.html)
+- Use **R Studio** to download weekly data and play-by-play data from [nflfastr](https://www.nflfastr.com/articles/beginners_guide.html). This is used to generate variables for the models.
+- Calculate previous week's points for fantasy defenses
 
 ### Live_Notebook1b
-- Gather odds from [The Odds API](https://the-odds-api.com/)
+- Gather odds for upcoming games from [The Odds API](https://the-odds-api.com/)
 - Create binary outdoors variables depending on stadium
 - Scrape RotoGrinders using **Beautiful Soup** for predicted wind speeds
 
@@ -78,7 +78,7 @@ Process dataset to be used for FLEX model (RB, WR, TE)
 ### Live_Notebook7
 - Takes user input to adjust QB_role variable (1 or 2) if there's a starting QB change.
 - Adjusts quarterback dataset if there are starting QB changes.
-- Adjusts FLEX dataset if there's a starting QB change. FLEX dataset contains QB strength variables that relate to starting QB
+- Adjusts FLEX dataset if there's a starting QB change. FLEX dataset contains QB strength variables that relate to starting QB.
 
 ### Live_Notebook8
 - Takes user input to adjust FLEX dataset for injuries.
