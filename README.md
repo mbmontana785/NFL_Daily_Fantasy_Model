@@ -80,18 +80,24 @@ Process dataset to be used for FLEX model (RB, WR, TE)
 - Adjusts quarterback dataset if there are starting QB changes.
 - Adjusts FLEX dataset if there's a starting QB change. FLEX dataset contains QB strength variables that relate to starting QB
 
-## Live_Notebook8
-Adjust FLEX dataset for injuries. Adjusting certain variables to reflect increased roles for injury replacements.
+### Live_Notebook8
+- Takes user input to adjust FLEX dataset for injuries.
+- Adjusts target or carry variables to reflect increased roles for injury replacements.
 
-## Live_Notebook9
-EDA. Check summary statistics for irregularities. Assess missing data and decide to fill values or drop rows.
+### Live_Notebook9
+- EDA. Check summary statistics for irregularities. 
+- Assess missing data and decide to fill values or drop rows.
 
-## Live_Notebook10
-Predictions
+### Live_Notebook10
+#### Predictions
 **Defense** Ridge Regression, Gradient Boost, XG Boost
 **Quarterback** Random Forest, Gradient Boost, XG Boost
 **FLEX** Random Forest, Gradient Boost, XG Boost
-Feature scalers and models stored in pickle files
+Feature scalers and models stored in **pickle** files
 
-## Live_Notebook11
-Generate lineups using PuLP
+### Live_Notebook11
+- Generate lineups using **PuLP**
+- With Streamlit deployment, this notebook is really only a backup. The PuLP operation occurs in the **app.py** file.
+
+### Live_Notebook12
+Model Evaluation
