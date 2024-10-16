@@ -52,19 +52,21 @@ Machine learning models that predict fantasy points for defense, quarterbacks, a
 | DK_GB_FLEX  |       7.67743 |
 | DK_XGB_FLEX |       7.64608 |
 
-## Live_Notebook1 (1)
-Process player lists downloaded from FanDuel and DraftKings
+## Jupyter Notebook Workflow
 
-## Live_Notebook1a
+### Live_Notebook1 (1)
+Process player lists downloaded from FanDuel and DraftKings. Player lists stored in **SQLite.** Name matching with **rapidfuzz** library.
+
+### Live_Notebook1a
 Calculate previous week's points for fantasy defenses
 - Use **R Studio** to download weekly data and play-by-play data from [nflfastr](https://www.nflfastr.com/articles/beginners_guide.html)
 
 ## Live_Notebook1b
-- Gather odds from The Odds API
+- Gather odds from [The Odds API](https://the-odds-api.com/)
 - Create binary outdoors variables depending on stadium
-- Scrape RotoGrinders for predicted wind speeds
+- Scrape RotoGrinders using **Beautiful Soup** for predicted wind speeds
 
-## Live_Notebook2
+### Live_Notebook2
 Process dataset to be used for defense model
 
 ## Live_Notebook3
