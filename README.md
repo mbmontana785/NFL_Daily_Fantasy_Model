@@ -3,12 +3,12 @@ Machine learning models that predict fantasy points for defense, quarterbacks, a
 
 ## Model Performance
 ### RMSE testing scores
-**Defense**
+**DEFENSE**
 - Ridge Regression: 6.0157
 - Gradient Boost: 6.0251
 - XGBoost: 6.0249
 
-**Quarterback**<br>
+**QUARTERBACK**<br>
 **FanDuel**
 - Random Forest: 6.7946
 - Gradient Boost: 6.8371
