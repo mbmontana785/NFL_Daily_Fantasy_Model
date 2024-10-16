@@ -1,5 +1,5 @@
 # NFL_Daily_Fantasy_Model
-Machine learning models that predict fantasy points for quarterbacks, running backs, wide receivers, tight ends and defenses on FanDuel and DraftKings.
+Machine learning models that predict fantasy points for defense, quarterbacks, and flex positions (running backs, wide receivers, tight ends) on FanDuel and DraftKings. Lineup generation with Python **PuLP** library within interactive interface in **Streamlit**.
 
 ## Live_Notebook1 (1)
 Process player lists downloaded from FanDuel and DraftKings
