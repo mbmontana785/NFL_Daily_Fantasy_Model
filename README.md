@@ -30,6 +30,28 @@ Machine learning models that predict fantasy points for defense, quarterbacks, a
 - Gradient Boost: 6.6893
 - XGBoost: 6.6718
 
+## Live Model Performance
+2024 Week 3
+FD_Ridge_D	5.439323
+FD_GB_D	5.442453
+FD_XGB_D	5.433941
+DK_Ridge_D	5.560427
+DK_GB_D	5.459133
+DK_XGB_D	5.444914
+FD_RF_QB	6.404433
+FD_GB_QB	6.329214
+FD_XGB_QB	6.275229
+DK_RF_QB	6.887222
+DK_GB_QB	7.025536
+DK_XGB_QB	6.907759
+FD_RF_FLEX	6.340756
+FD_GB_FLEX	6.299230
+FD_XGB_FLEX	6.325915
+DK_RF_FLEX	7.690199
+DK_GB_FLEX	7.677433
+DK_XGB_FLEX	7.646078
+
+
 ## Live_Notebook1 (1)
 Process player lists downloaded from FanDuel and DraftKings
 
