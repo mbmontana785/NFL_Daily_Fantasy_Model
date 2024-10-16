@@ -8,7 +8,7 @@ Machine learning models that predict fantasy points for defense, quarterbacks, a
 - Gradient Boost: 6.0251
 - XGBoost: 6.0249
 
-**Quarterback**
+**Quarterback**<br>
 **FanDuel**
 - Random Forest: 6.7946
 - Gradient Boost: 6.8371
@@ -19,7 +19,7 @@ Machine learning models that predict fantasy points for defense, quarterbacks, a
 - Gradient Boost: 7.4412
 - XGBoost: 7.4497
 
-**FLEX**
+**FLEX**<br>
 **FanDuel**
 - Random Forest: 5.6812
 - Gradient Boost: 5.6761
