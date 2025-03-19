@@ -1,5 +1,7 @@
 # NFL_Daily_Fantasy_Model
-Machine learning models that predict fantasy points for defense, quarterbacks, and flex positions (running backs, wide receivers, tight ends) on FanDuel and DraftKings. Interactive interface in **Streamlit** with Python **PuLP** library used for lineup optimization based on constraints such as salary cap and position requirements.
+**Model yielded $7,243.99 in FanDuel winnings on $1,132.35 of entry fees in 2024, a profit of more than 600%.**<br>
+
+Models predict fantasy points for defense, quarterbacks, and flex positions (running backs, wide receivers, tight ends) on FanDuel and DraftKings. Interactive interface in **Streamlit** with Python **PuLP** library used for lineup optimization based on constraints such as salary cap and position requirements.
 
 ## Model Performance
 ### RMSE testing scores
