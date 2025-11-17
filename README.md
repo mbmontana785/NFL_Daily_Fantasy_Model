@@ -3,7 +3,7 @@
 
 Models predict fantasy points for defense, quarterbacks, and flex positions (running backs, wide receivers, tight ends) on FanDuel and DraftKings. Interactive interface in **Streamlit** with Python **PuLP** library used for lineup optimization based on constraints such as salary cap and position requirements.
 
-![Google slides project presentation](NFL_Daily_Fantasy Model_and_Lineup_Generator_(3).pdf)
+![Google slides project presentation](Google_Slides_Presentation.pdf)
 
 # Performance Update
 This visualization compares the 2024 (blue) and 2025 (orange) model performances to the performances on the test data.
